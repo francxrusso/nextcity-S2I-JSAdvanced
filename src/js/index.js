@@ -9,6 +9,8 @@ async function getCity(name) {
   try {
     //delete results from the section
     resultSection.innerHTML = "";
+    //start the loader animation
+    loader.classList.toggle("hidden");
     //create the base URL with his query
     const baseUrl = "https://api.teleport.org/api/cities/?search=";
     const embedQuery =
@@ -21,9 +23,6 @@ async function getCity(name) {
         "Mhh it looks like the city you are looking for doesnt exist, try again! 🤔"
       );
     }
-
-    //start the loader animation
-  loader.classList.toggle("hidden");
 
     city = await city.json();
 
