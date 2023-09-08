@@ -2,6 +2,7 @@
 const submitBtn = document.querySelector("#submit-btn");
 const searchField = document.querySelector("#city-input");
 const resultSection = document.querySelector("#result");
+const loader = document.querySelector(".loader");
 
 //function to retrieve city's data with Teleport API
 async function getCity(name) {
@@ -20,6 +21,10 @@ async function getCity(name) {
         "Mhh it looks like the city you are looking for doesnt exist, try again! 🤔"
       );
     }
+
+    //start the loader animation
+  loader.classList.toggle("hidden");
+
     city = await city.json();
 
     const data = city["_embedded"]["city:search-results"][0];
