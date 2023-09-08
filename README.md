@@ -4,7 +4,7 @@ Project for Start2Impact University Front-end development master. The goal was t
 
 <a href="https://francxrusso.github.io/nextcity-S2I-JSadvanced/">Link demo</a>
 
-![nextcity](https://github.com/francxrusso/nextcity-S2I-JSadvanced/assets/98696732/4b272c39-4fea-4308-9273-c594633287e7)
+![nextcity](https://github.com/francxrusso/nextcity-S2I-JSAdvanced/assets/98696732/b9cfa515-1d9e-45b9-bf8d-64ba4d03e603)
 
 # Built with
 
