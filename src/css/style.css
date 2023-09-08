@@ -1,0 +1,175 @@
+:root {
+    --blue: #242431;
+    --light-sky:rgba(180, 223, 255, 0.5);
+    --sky:#8EC6EF;
+    --orange:#FFB531;
+    --input-grey:#919191;
+    --blue-clear:#499BCE;
+    --accent-blue:rgba(0, 157, 255, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--light-sky);
+}
+
+main{
+    min-height: 100%;
+}
+
+.social-icons{
+    margin-right: 20px;
+}
+
+.social-icons a {
+    color: var(--blue);
+    transition: all 0.4s ease-in-out;
+    margin-left: 5px;
+}
+
+.social-icons a:hover {
+    color: var(--orange);
+}
+ 
+footer { 
+    margin: auto;
+    background-color: var(--light-sky);
+    color: var(--blue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 0px;
+    min-height: 30px;
+    max-height: 30px;
+    width:100%;
+    position: relative;
+  left: 0;
+  bottom: 0;
+
+}
+
+.footer-text>p{
+    font-size:12px;
+    margin-left: 20px;
+}
+
+
+h1{
+    font-size: 53px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+h2{
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.subtitle{
+    font-size:20px;
+    margin-bottom: 60px;
+}
+
+.container-sky{
+width:100%;
+z-index: 1;   
+}  
+
+.illustration{
+    width:100%;
+    z-index: -1; 
+    position: relative;
+    bottom:0;
+    left:0; 
+}
+
+#result{
+    display: none;
+    padding: 50px 0px;
+    margin: 10px 300px;
+    z-index:1;
+    background-color: rgba(255, 255, 255, 0.611);
+}
+
+
+.logo{
+    max-width: 200px;
+    margin: 20px 0px 60px 0px;
+}
+
+input[type=text]{
+    width: 800px;
+    height: 40px;
+    font-size:16px;
+    font-weight:400;
+    padding-left:10px;
+    border: 1px solid var(--accent-blue);
+}
+
+input[type=text]:focus{
+    background-color: var(--light-sky);
+}
+
+
+button{
+    height: 45px;
+    width: 45px;
+    color: var(--blue);
+    background-color: var(--accent-blue);
+    border:none;
+}
+
+.sum{
+    margin:30px 160px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.listacat{
+    line-height: normal;
+}
+
+/*rensponsive*/
+@media only screen and (max-width: 992px) {
+    h1{
+        font-size: 30px;
+    }
+    
+    h2{
+        font-size: 20px;
+    }
+    
+    h3{
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+    input[type=text]{
+        width: 300px;
+        height: 40px;
+        font-size:14px;
+        padding-left:10px;
+    }
+    #result{
+        padding: 50px 0px;
+        margin: 10px 0px;
+    }
+    .sum{
+        margin:30px 5px;
+    }
+}

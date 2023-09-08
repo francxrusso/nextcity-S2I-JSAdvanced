@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Livello_2" data-name="Livello 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.71 34.22">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #242431;
+      }
+
+      .cls-2 {
+        fill: #8ec6ef;
+      }
+    </style>
+  </defs>
+  <g id="Livello_1-2" data-name="Livello 1">
+    <g>
+      <g>
+        <polygon class="cls-2" points="13.39 0 0 4.72 0 34.22 13.39 34.22 13.39 0"/>
+        <polygon class="cls-2" points="21.71 17.45 13.34 12.73 13.34 34.22 21.71 34.22 21.71 17.45"/>
+      </g>
+      <rect class="cls-1" x="14.05" y="19.58" width="1.98" height="1.98"/>
+      <rect class="cls-1" x="14.05" y="23.02" width="1.98" height="1.98"/>
+      <rect class="cls-1" x="14.05" y="26.47" width="1.98" height="1.98"/>
+      <rect class="cls-1" x="14.05" y="29.91" width="1.98" height="1.98"/>
+      <rect class="cls-1" x="17.71" y="19.58" width="1.98" height="1.98"/>
+      <rect class="cls-1" x="17.71" y="23.02" width="1.98" height="1.98"/>
+      <rect class="cls-1" x="17.71" y="26.47" width="1.98" height="1.98"/>
+      <rect class="cls-1" x="17.71" y="29.91" width="1.98" height="1.98"/>
+      <rect class="cls-1" x="1.97" y="7.15" width="9.27" height="1.39"/>
+      <rect class="cls-1" x="1.97" y="10.44" width="9.27" height="1.39"/>
+      <rect class="cls-1" x="1.97" y="13.72" width="9.27" height="1.39"/>
+      <rect class="cls-1" x="1.97" y="17" width="9.27" height="1.39"/>
+      <rect class="cls-1" x="1.97" y="20.29" width="9.27" height="1.39"/>
+      <rect class="cls-1" x="1.97" y="23.57" width="9.27" height="1.39"/>
+      <rect class="cls-1" x="1.97" y="26.86" width="9.27" height="1.39"/>
+      <rect class="cls-1" x="1.97" y="30.14" width="9.27" height="1.39"/>
+    </g>
+  </g>
+</svg>

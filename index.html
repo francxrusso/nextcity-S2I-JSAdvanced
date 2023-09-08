@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./src/css/reset.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/2352b387da.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./src/img/favicon.svg"
+    />
+    <title>nextcity</title>
+    <meta property="og:title" content="nextcity | discover your next city" />
+    <meta property="og:type" content="image" />
+    <meta
+      property="og:url"
+      content="https://francxrusso.github.io/nextcity-S2I-JSadvanced"
+    />
+    <meta property="og:image" content="/src/img/logo-svg-colored" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="container-sky">
+      <header>
+        <img
+          src="./src/img/logo svg colored.svg"
+          alt="nextcity logo"
+          class="logo"
+        />
+      </header>
+
+      <main>
+        <h1>Discover your next city</h1>
+        <p class="subtitle">
+          A quick guide to learn more about the next city<br />
+          you want to visit or to live in
+        </p>
+        <form id="search-form">
+          <input
+            class="form-field"
+            type="text"
+            placeholder="Insert your dream city"
+            id="city-input"
+          />
+          <button type="submit" class="btn-search" id="submit-btn">
+            <i class="fa-sharp fa-solid fa-magnifying-glass fa-2xl"></i>
+          </button>
+        </form>
+
+        <!-- Results section-->
+        <section class="results" id="result"></section>
+
+        <div class="illustration-container">
+          <img
+            src="./src/img/illustration city.svg"
+            alt="city illustration from freepik"
+            class="illustration"
+          />
+        </div>
+      </main>
+    </div>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-text">
+        <p>Copyright © 2022 Francesca Russo | Designed and coded with 💚</p>
+      </div>
+      <div class="social-icons">
+        <a
+          class="fa-brands fa-whatsapp fa-lg"
+          href="https://wa.me/+393454134947"
+          target="_blank"
+          rel="noopener"
+        ></a>
+        <a
+          class="fa-brands fa-telegram fa-lg"
+          href="https://telegram.me/franxkx"
+          target="_blank"
+          rel="noopener"
+        ></a>
+        <a
+          class="fa-brands fa-github fa-lg"
+          href="https://github.com/francxrusso"
+          target="_blank"
+          rel="noopener"
+        ></a>
+        <a
+          class="fa-brands fa-linkedin-in fa-lg"
+          href="https://www.linkedin.com/in/francxrusso/"
+          target="_blank"
+          rel="noopener"
+        ></a>
+      </div>
+    </footer>
+    <script src="./src/js/index.js"></script>
+  </body>
+</html>
