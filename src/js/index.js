@@ -100,14 +100,6 @@ function updateUI(data) {
   }
 }
 
-//function to show error message
-function handleError(error) {
-  const errorElement = document.createElement("p");
-  errorElement.textContent = error.message;
-  resultSection.appendChild(errorElement);
-  resultSection.style.display = "block";
-}
-
 // Event listener on the form to get the results
 const searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", async (event) => {
