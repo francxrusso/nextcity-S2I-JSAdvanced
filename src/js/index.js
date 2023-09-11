@@ -1,64 +1,6 @@
-// function to display items in UI
-function updateUI(data) {
-  const resultSection = document.querySelector("#result");
-  resultSection.innerHTML = ""; // remove previous results
-
-  if (!data) {
-    // show error message if there is no city
-    const errorElement = document.createElement("p");
-    errorElement.innerHTML =
-      "Mhh seems that your city doesn't exist, try again!🤔";
-    resultSection.appendChild(errorElement);
-    resultSection.style.display = "block";
-    return;
-  }
-
-  const cityName = data["matching_full_name"];
-  const population = data["_embedded"]["city:item"]["population"];
-  const cityScore =
-    data["_embedded"]["city:item"]["_embedded"]["city:urban_area"]["_embedded"][
-      "ua:scores"
-    ]["teleport_city_score"];
-  const summary =
-    data["_embedded"]["city:item"]["_embedded"]["city:urban_area"]["_embedded"][
-      "ua:scores"
-    ]["summary"];
-  const categories =
-    data["_embedded"]["city:item"]["_embedded"]["city:urban_area"]["_embedded"][
-      "ua:scores"
-    ]["categories"];
-
-  const cityTitle = document.createElement("h2");
-  cityTitle.innerHTML = cityName;
-
-  const summaryElement = document.createElement("p");
-  summaryElement.classList.add("sum");
-  summaryElement.innerHTML = summary;
-
-  const overallScore = document.createElement("h3");
-  overallScore.innerHTML = `<i class="fa-solid fa-building-circle-check"></i> Overall Score: ${cityScore}`;
-
-  const populationElement = document.createElement("h3");
-  populationElement.innerHTML = `<i class="fa-solid fa-person-shelter"></i> Population: ${population}`;
-
-  const categoryList = document.createElement("ul");
-  // func to create a list of categories
-  categories.forEach((category) => {
-    const li = document.createElement("li");
-    li.classList.add("listacat");
-    li.textContent = `${category.name}: ${category.score_out_of_10}`;
-    categoryList.appendChild(li);
-  });
-
-  //append every element to the result section
-  resultSection.appendChild(cityTitle);
-  resultSection.appendChild(summaryElement);
-  resultSection.appendChild(overallScore);
-  resultSection.appendChild(populationElement);
-  resultSection.appendChild(categoryList);
-
-  resultSection.style.display = "block";
-}
+//select section and loader div
+const resultSection = document.querySelector("#result");
+const loader = document.querySelector(".loader");
 
 // function for the API request
 async function fetchData(cityName) {
@@ -66,9 +8,8 @@ async function fetchData(cityName) {
   const embedQuery =
     "&embed=city:search-results/city:item/city:urban_area/ua:scores";
 
-  //show the loader to give users a feedback
-  const loader = document.querySelector(".loader");
-  loader.classList.toggle("hidden");
+  //remove previous results from the section
+  resultSection.innerHTML = "";
 
   try {
     const response = await fetch(baseUrl + cityName + embedQuery);
@@ -86,15 +27,78 @@ async function fetchData(cityName) {
   }
 }
 
+// function to create HTML elements
+function createHTMLElement(tag, content) {
+  const element = document.createElement(tag);
+  element.innerHTML = content;
+  return element;
+}
+
+// function to display items in UI
+function updateUI(data) {
+  if (!data) {
+    // show error message if the city is not available in the API
+    resultSection.appendChild(
+      createHTMLElement(
+        "p",
+        "Mhh seems that your city doesn't exist, try again!🤔"
+      )
+    );
+    resultSection.style.display = "block";
+  } else {
+    //if the city exist take these data from the API
+    const cityName = data["matching_full_name"];
+    const population = data["_embedded"]["city:item"]["population"];
+    const cityScore =
+      data["_embedded"]["city:item"]["_embedded"]["city:urban_area"][
+        "_embedded"
+      ]["ua:scores"]["teleport_city_score"];
+    const summary =
+      data["_embedded"]["city:item"]["_embedded"]["city:urban_area"][
+        "_embedded"
+      ]["ua:scores"]["summary"];
+    const categories =
+      data["_embedded"]["city:item"]["_embedded"]["city:urban_area"][
+        "_embedded"
+      ]["ua:scores"]["categories"];
+    //create HTML elements and show them in the result section
+
+    // Create a <p> element with the "sum" class for the summary
+    const summaryElement = createHTMLElement("p", summary);
+    summaryElement.classList.add("sum");
+
+    const elements = [
+      createHTMLElement("h2", cityName),
+      summaryElement,
+      createHTMLElement(
+        "h3",
+        `<i class="fa-solid fa-building-circle-check"></i> Overall Score: ${cityScore}`
+      ),
+      createHTMLElement(
+        "h3",
+        `<i class="fa-solid fa-person-shelter"></i> Population: ${population}`
+      ),
+    ];
+
+    const categoryList = document.createElement("ul");
+    // func to create a list of categories
+    categories.forEach((category) => {
+      const li = document.createElement("li");
+      li.classList.add("listacat");
+      li.textContent = `${category.name}: ${category.score_out_of_10}`;
+      categoryList.appendChild(li);
+    });
+    elements.push(categoryList);
+
+    //append every element to the result section
+    elements.forEach((element) => resultSection.appendChild(element));
+
+    resultSection.style.display = "block";
+  }
+}
+
 //function to handle errors
 function handleError(error) {
-  const resultSection = document.querySelector("#result");
-  resultSection.innerHTML = ""; // Remove previous results
-
-  //remove the loader
-  const loader = document.querySelector(".loader");
-  loader.classList.toggle("hidden");
-
   const errorElement = document.createElement("p");
   errorElement.textContent = error.message;
   resultSection.appendChild(errorElement);
@@ -108,11 +112,14 @@ searchForm.addEventListener("submit", async (event) => {
 
   const searchField = document.querySelector("#city-input");
   const cityName = searchField.value;
+  //show the loader to give users a feedback
+  loader.classList.toggle("hidden");
 
   try {
     const cityData = await fetchData(cityName);
     updateUI(cityData);
     searchField.value = ""; // delete the previous search from the input
+    loader.classList.add("hidden"); // remove the loaders
   } catch (error) {
     handleError(error);
   }
