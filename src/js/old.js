@@ -1,4 +1,28 @@
 
+  // select HTML elements input, button, section and loader
+const submitBtn = document.querySelector("#submit-btn");
+const searchField = document.querySelector("#city-input");
+const resultSection = document.querySelector("#result");
+const loader = document.querySelector(".loader");
+
+//function to retrieve city's data with Teleport API
+async function getCity(name) {
+  try {
+    //start the loader animation
+    loader.classList.toggle("hidden");
+    //delete results from the section
+    resultSection.innerHTML = "";
+    //create the base URL with his query
+    const baseUrl = "https://api.teleport.org/api/cities/?search=";
+    const embedQuery =
+      "&embed=city:search-results/city:item/city:urban_area/ua:scores";
+    //put together base url, search word in the input + query
+    let city = await fetch(baseUrl + name + embedQuery);
+
+    city = await city.json();
+
+    const data = city["_embedded"]["city:search-results"][0];
+    console.log(data);
     // got the data now select each element to display
     const cityName = data["matching_full_name"];
     const population = data["_embedded"]["city:item"]["population"];
@@ -49,8 +73,21 @@
       categoryList.appendChild(li);
       resultSection.appendChild(categoryList);
     });
+  } catch (e) {
+    //handling errors
+    console.error(e.message);
+    alert("There was an error, try again!🤔");
+  }
+}
 
-      //start the loader animation
-      loader.classList.toggle("hidden");
-      //delete results from the section
-      resultSection.innerHTML = "";
+//event listener on the form
+const searchForm = document.querySelector("#search-form");
+
+searchForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const cityName = searchField.value;
+  await getCity(cityName);
+  //delete previous search from the field
+  searchField.value = "";
+});
