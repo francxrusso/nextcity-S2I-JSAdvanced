@@ -8,6 +8,9 @@ async function fetchData(cityName) {
   const embedQuery =
     "&embed=city:search-results/city:item/city:urban_area/ua:scores";
 
+  //create URL using template literals
+  const apiUrl = `${baseUrl}${cityName}${embedQuery}`;
+
   //remove previous results from the section
   resultSection.innerHTML = "";
 
@@ -15,7 +18,7 @@ async function fetchData(cityName) {
     const response = await fetch(baseUrl + cityName + embedQuery);
 
     if (!response.ok) {
-      throw new Error("Error on the API request. Please try again.");
+      throw new Error("oops! something went wrong. please try again.");
     }
 
     const data = await response.json();
@@ -41,7 +44,7 @@ function updateUI(data) {
     resultSection.appendChild(
       createHTMLElement(
         "p",
-        "Mhh seems that your city doesn't exist, try again!🤔"
+        "mhh seems that your city doesn't exist, try again!🤔"
       )
     );
     resultSection.style.display = "block";
@@ -97,7 +100,7 @@ function updateUI(data) {
   }
 }
 
-//function to handle errors
+//function to show error message
 function handleError(error) {
   const errorElement = document.createElement("p");
   errorElement.textContent = error.message;
